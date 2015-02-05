@@ -6,8 +6,8 @@ define([], function() {
     var controller = function($scope, $state) {
         
         $scope.events = {};
-        $scope.events.login = function () {
-            console.log('........................... coooooooooooooooooool');
+        $scope.events.login = function (provider) {
+            console.log(provider + ' ........................... coooooooooooooooooool');
         };
     };
     controller.$inject = ['$scope', '$state'];
