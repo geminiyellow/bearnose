@@ -7,7 +7,9 @@ requirejs.config({
         angularSanitize: '../../lib/angular-sanitize/angular-sanitize.min',
         uiRouter: '../../lib/angular-ui-router/release/angular-ui-router.min',
         ionic: '../../lib/ionic/js/ionic.min',
-        ionicAngular: '../../lib/ionic/js/ionic-angular.min'
+        ionicAngular: '../../lib/ionic/js/ionic-angular.min',
+        angularAria : '../../lib/angular-aria/angular-aria',
+        angularMaterial : '../../lib/angular-material/angular-material'
     },
     shim: {
         angular: { exports: 'angular' },
@@ -15,7 +17,9 @@ requirejs.config({
         angularSanitize: { deps: ['angular'] },
         uiRouter: { deps: ['angular'] },
         ionic: { deps: ['angular'], exports: 'ionic' },
-        ionicAngular: { deps: ['angular', 'ionic', 'uiRouter', 'angularAnimate', 'angularSanitize'] }
+        ionicAngular: { deps: ['angular', 'ionic', 'uiRouter', 'angularAnimate', 'angularSanitize'] },
+        angularAria : { deps: ['angular'] },
+        angularMaterial: { deps: ['angular'] }
     },
     priority: [
         'angular',
