@@ -4,7 +4,9 @@ define([], function() {
     'use strict';
 
     var controller = function($scope, $state) {
-        $scope.login = function () {
+        
+        $scope.events = {};
+        $scope.events.login = function () {
             console.log('........................... coooooooooooooooooool');
         };
     };
