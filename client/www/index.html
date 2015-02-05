@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
+    <title>Bearnose</title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -13,22 +13,23 @@
     -->
 
     <!-- ionic/angularjs js -->
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <!--<script src="lib/ionic/js/ionic.bundle.js"></script>-->
 
     <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
+    <!--<script src="cordova.js"></script>-->
 
     <!-- your app's js -->
-    <script src="js/app.js"></script>
+    <!--<script src="js/app.js"></script>-->
   </head>
-  <body ng-app="starter">
+  <body animation="slide-left-right-ios7">
 
-    <ion-pane>
-      <ion-header-bar class="bar-stable">
-        <h1 class="title">Ionic Blank Starter</h1>
-      </ion-header-bar>
-      <ion-content>
-      </ion-content>
-    </ion-pane>
+    <ion-nav-bar class="bar-stable nav-title-slide-ios7"></ion-nav-bar>
+    
+    <ion-nav-view animation="slide-left-right"></ion-nav-view>
+  
+    <!-- use require.js -->
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+    <script src="lib/requirejs/require.js" data-main="js/main"></script>
   </body>
 </html>
