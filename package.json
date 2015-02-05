@@ -1,0 +1,38 @@
+{
+  "name": "bearnose",
+  "version": "1.0.0",
+  "description": "Life was like a box of chocolates.",
+  "author": "geminiyellow <geminiyellow@gmail.com>",
+  "scripts": {
+    "start": "node server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/geminiyellow/bearnose.git"
+  },
+  "keywords": [
+    "bearnose"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/geminiyellow/bearnose/issues"
+  },
+  "homepage": "https://github.com/geminiyellow/bearnose",
+  "dependencies": {
+    "bcryptjs": "latest",
+    "body-parser": "latest",
+    "compression": "latest",
+    "cors": "latest",
+    "express": "latest",
+    "express-session": "latest",
+    "jwt-simple": "latest",
+    "lodash": "latest",
+    "moment": "latest",
+    "mongoose": "^3.8.22",
+    "request": "^2.51.0"
+  },
+  "devDependencies": {
+    "cordova": "latest",
+    "ionic": "latest"
+  }
+}
