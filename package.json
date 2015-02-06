@@ -35,6 +35,7 @@
   "devDependencies": {
     "bower": "latest",
     "cordova": "latest",
+    "gulp": "^3.8.10",
     "ionic": "latest",
     "jasmine": "latest",
     "jasmine-core": "^2.2.0",
