@@ -1,0 +1,19 @@
+{
+  "name": "bearnose",
+  "version": "0.0.0",
+  "description": "Life was like a box of chocolates.",
+  "author": "geminiyellow <geminiyellow@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "bearnose"
+  ],
+  "homepage": "https://github.com/geminiyellow/bearnose#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/geminiyellow/bearnose.git"
+  },
+  "main": "run.js",
+  "bugs": {
+    "url": "https://github.com/geminiyellow/bearnose/issues"
+  }
+}
