@@ -4,16 +4,7 @@
   "description": "Life was like a box of chocolates.",
   "author": "geminiyellow <geminiyellow@gmail.com>",
   "license": "MIT",
-  "keywords": [
-    "bearnose"
-  ],
-  "homepage": "https://github.com/geminiyellow/bearnose#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/geminiyellow/bearnose.git"
-  },
-  "main": "run.js",
-  "bugs": {
-    "url": "https://github.com/geminiyellow/bearnose/issues"
+  "scripts": {
+    "start": "cd ./client && npm install && gulp build.dotnet.dev && cd ../server && dotnet restore && env ASPNETCORE_URLS='https://*:3000' ASPNETCORE_ENVIRONMENT='Development' dotnet run"
   }
 }
