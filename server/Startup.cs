@@ -53,6 +53,14 @@ namespace server
                 });
             }
 
+            // TODO: auth0
+            var options = new JwtBearerOptions
+            {
+                Audience = Configuration["Auth0:ApiIdentifier"],
+                Authority = $"https://{Configuration["Auth0:Domain"]}/"
+            };
+            app.UseJwtBearerAuthentication(options);
+
             // Add MVC to the request pipeline.
             app.UseMvc(routes =>
             {
