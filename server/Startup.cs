@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace server
 {
@@ -34,6 +35,10 @@ namespace server
                     // Force Camel Case to JSON
                     opts.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 });
+			services.AddSwaggerGen(c =>
+			{
+				c.SwaggerDoc("v1", new Info { Version = "v1" });
+			});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +56,12 @@ namespace server
                     FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "../client/node_modules/" )),
                     RequestPath = "/node_modules"
                 });
+
+				app.UseSwagger();
+				app.UseSwaggerUi(c =>
+				{
+					c.SwaggerEndpoint("/swagger/v1/swagger.json", "V1");
+				});
             }
 
             // TODO: auth0

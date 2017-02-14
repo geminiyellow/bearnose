@@ -31,6 +31,18 @@
     <PackageReference Include="Microsoft.AspNetCore.SpaServices">
       <Version>1.1.0-rc1-final</Version>
     </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore">
+      <Version>1.0.0-rc1</Version>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger">
+      <Version>1.0.0-rc1</Version>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUi">
+      <Version>1.0.0-rc1</Version>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen">
+      <Version>1.0.0-rc1</Version>
+    </PackageReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
