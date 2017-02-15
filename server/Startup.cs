@@ -6,6 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using MicroSB.Server.Models;
 
 namespace MicroSB.Server
 {
@@ -34,6 +37,12 @@ namespace MicroSB.Server
                     // Force Camel Case to JSON
                     opts.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 });
+
+			// Add EntityFramework's Identity support.
+			services.AddEntityFramework();
+			// Add ApplicationDbContext.
+			// options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"])
+			services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite("Filename=./microsb.db"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
