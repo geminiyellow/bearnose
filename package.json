@@ -5,6 +5,6 @@
   "author": "geminiyellow <geminiyellow@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "cd ./client && npm install && gulp build.dotnet.dev && cd ../server && dotnet restore && env ASPNETCORE_URLS='https://*:3000' ASPNETCORE_ENVIRONMENT='Development' dotnet run"
+    "start": "cd ./client && npm install && gulp dotnet.build.dev && cd ../server && dotnet restore && env ASPNETCORE_URLS='https://*:3000' ASPNETCORE_ENVIRONMENT='Development' dotnet run"
   }
 }
