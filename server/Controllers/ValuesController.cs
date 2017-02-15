@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace server.Controllers
+namespace MicroSB.Server.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller

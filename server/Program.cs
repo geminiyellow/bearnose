@@ -1,9 +1,9 @@
 ﻿using System.IO;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 
-namespace server
+namespace MicroSB.Server
 {
     public class Program
     {
