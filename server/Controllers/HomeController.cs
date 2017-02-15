@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace server.Controllers
+namespace MicroSB.Server.Controllers
 {
 
     public class HomeController : Controller
