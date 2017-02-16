@@ -20,6 +20,7 @@ namespace MicroSB.Server.Models.Shops
 		#endregion Constructor
 
 		#region Properties
+
 		[Key]
 		[Required]
 		public int Id { get; set;}

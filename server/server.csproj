@@ -32,6 +32,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="1.1.0" />
+    <PackageReference Include="AutoMapper" Version="5.2.0" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="1.1.0" />
@@ -46,6 +47,8 @@
     <Folder Include="Models\Shops\" />
     <Folder Include="Models\Comments\" />
     <Folder Include="Models\Users\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="ViewModels\Shops\" />
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="1.0.0-msbuild3-final" />
