@@ -1,14 +1,15 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using MicroSB.Server.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using MicroSB.Server.Models;
 
 namespace MicroSB.Server
 {
@@ -38,15 +39,22 @@ namespace MicroSB.Server
                     opts.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                 });
 
-			// Add EntityFramework's Identity support.
-			services.AddEntityFramework();
-			// Add ApplicationDbContext.
-			// options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"])
-			services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite("Filename=./microsb.db"));
+            // Add EntityFramework's Identity support.
+            services.AddEntityFramework();
+            // Add ApplicationDbContext.
+            // options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"])
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite("Filename=./microsb.db"));
+
+            // Add ApplicationDbContext's DbSeeder
+            services.AddSingleton<IDatabaseInitializer, DatabaseInitializer>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(
+            IApplicationBuilder app,
+            IHostingEnvironment env,
+            ILoggerFactory loggerFactory,
+            IDatabaseInitializer databaseInitializer)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -57,7 +65,7 @@ namespace MicroSB.Server
             {
                 app.UseStaticFiles(new StaticFileOptions()
                 {
-                    FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "../client/node_modules/" )),
+                    FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "../client/node_modules/")),
                     RequestPath = "/node_modules"
                 });
             }
@@ -76,6 +84,16 @@ namespace MicroSB.Server
                 routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");
                 routes.MapSpaFallbackRoute("spa-fallback", new { controller = "Home", action = "Index" });
             });
+
+            // Seed the Database (if needed)
+            try
+            {
+                databaseInitializer.SeedAsync().GetAwaiter().GetResult();
+            }
+            catch (AggregateException e)
+            {
+                throw new Exception(e.ToString());
+            }
         }
     }
 }

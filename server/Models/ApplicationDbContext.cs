@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using MicroSB.Server.Models.Comments;
 using MicroSB.Server.Models.Shops;
 using MicroSB.Server.Models.Users;
-using MicroSB.Server.Models.Comments;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace MicroSB.Server.Models
 {
