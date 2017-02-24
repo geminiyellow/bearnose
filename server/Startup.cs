@@ -45,8 +45,11 @@ namespace MicroSB.Server
 			// Add EntityFramework's Identity support.
 			services.AddEntityFramework();
 			// Add ApplicationDbContext.
+
 			// options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"])
-			services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite("Filename=./microsb.db"));
+			// options.UseSqlite("Filename=./microsb.db")
+			var connection = Configuration.GetConnectionString("microsb");
+			services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(connection));
 
 			// Add ApplicationDbContext's DbSeeder
 			services.AddSingleton<IDatabaseInitializer, DatabaseInitializer>();

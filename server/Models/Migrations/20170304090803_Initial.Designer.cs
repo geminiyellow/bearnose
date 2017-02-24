@@ -8,7 +8,7 @@ using MicroSB.Server.Models;
 namespace server.Models.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170215101413_Initial")]
+    [Migration("20170304090803_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
