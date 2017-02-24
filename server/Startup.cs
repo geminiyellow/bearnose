@@ -3,9 +3,11 @@ using System.IO;
 using AutoMapper;
 using MicroSB.Server.Models;
 using MicroSB.Server.Models.Shops;
+using MicroSB.Server.Models.Users;
 using MicroSB.Server.ViewModels.Shops;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
@@ -44,6 +46,17 @@ namespace MicroSB.Server
 
 			// Add EntityFramework's Identity support.
 			services.AddEntityFramework();
+
+			// Add Identity Services & Stores
+			services.AddIdentity<ApplicationUser, IdentityRole>(config =>
+			{
+				config.User.RequireUniqueEmail = true;
+				config.Password.RequireNonAlphanumeric = false;
+				config.Cookies.ApplicationCookie.AutomaticChallenge = false;
+			})
+			.AddEntityFrameworkStores<ApplicationDbContext>()
+			.AddDefaultTokenProviders();
+
 			// Add ApplicationDbContext.
 
 			// options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"])
