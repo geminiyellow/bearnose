@@ -8,13 +8,14 @@ using MicroSB.Server.Models;
 namespace server.Models.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170304090803_Initial")]
+    [Migration("20170306033347_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "1.1.0-rtm-22752");
+                .HasAnnotation("ProductVersion", "1.1.0-rtm-22752")
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("MicroSB.Server.Models.Comments.Comment", b =>
                 {

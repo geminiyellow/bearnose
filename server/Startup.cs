@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using AutoMapper;
 using MicroSB.Server.Models;
@@ -44,12 +44,10 @@ namespace MicroSB.Server
 
 			// Add EntityFramework's Identity support.
 			services.AddEntityFramework();
-			// Add ApplicationDbContext.
 
-			// options.UseSqlServer(Configuration["Data:DefaultConnection:ConnectionString"])
-			// options.UseSqlite("Filename=./microsb.db")
+			// Add ApplicationDbContext.
 			var connection = Configuration.GetConnectionString("microsb");
-			services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(connection));
+			services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
 
 			// Add ApplicationDbContext's DbSeeder
 			services.AddSingleton<IDatabaseInitializer, DatabaseInitializer>();
