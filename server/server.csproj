@@ -49,6 +49,7 @@
     <Folder Include="Models\Users\" />
     <Folder Include="ViewModels\" />
     <Folder Include="ViewModels\Shops\" />
+    <Folder Include="Classes\" />
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="1.0.0-msbuild3-final" />
