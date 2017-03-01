@@ -18,24 +18,24 @@ namespace MicroSB.Server.Models
 
 		#region Methods
 
-		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		protected override void OnModelCreating(ModelBuilder builder)
 		{
-			base.OnModelCreating(modelBuilder);
+			base.OnModelCreating(builder);
 
-			modelBuilder.Entity<ApplicationUser>().ToTable("Users");
-			modelBuilder.Entity<ApplicationUser>().HasMany(u => u.Shops).WithOne(i => i.Author);
-			modelBuilder.Entity<ApplicationUser>().HasMany(u => u.Comments).WithOne(c => c.Author).HasPrincipalKey(u => u.Id);
+			builder.Entity<ApplicationUser>().ToTable("Users");
+			builder.Entity<ApplicationUser>().HasMany(u => u.Shops).WithOne(i => i.Author);
+			builder.Entity<ApplicationUser>().HasMany(u => u.Comments).WithOne(c => c.Author).HasPrincipalKey(u => u.Id);
 
-			modelBuilder.Entity<Shop>().ToTable("Shops");
-			modelBuilder.Entity<Shop>().Property(i => i.Id).ValueGeneratedOnAdd();
-			modelBuilder.Entity<Shop>().HasOne(i => i.Author).WithMany(u => u.Shops);
-			modelBuilder.Entity<Shop>().HasMany(i => i.Comments).WithOne(c => c.Shop);
+			builder.Entity<Shop>().ToTable("Shops");
+			builder.Entity<Shop>().Property(i => i.Id).ValueGeneratedOnAdd();
+			builder.Entity<Shop>().HasOne(i => i.Author).WithMany(u => u.Shops);
+			builder.Entity<Shop>().HasMany(i => i.Comments).WithOne(c => c.Shop);
 
-			modelBuilder.Entity<Comment>().ToTable("Comments");
-			modelBuilder.Entity<Comment>().HasOne(c => c.Author).WithMany(u => u.Comments).HasForeignKey(c => c.UserId).OnDelete(DeleteBehavior.Restrict);
-			modelBuilder.Entity<Comment>().HasOne(c => c.Shop).WithMany(i => i.Comments);
-			modelBuilder.Entity<Comment>().HasOne(c => c.Parent).WithMany(c => c.Children);
-			modelBuilder.Entity<Comment>().HasMany(c => c.Children).WithOne(c => c.Parent);
+			builder.Entity<Comment>().ToTable("Comments");
+			builder.Entity<Comment>().HasOne(c => c.Author).WithMany(u => u.Comments).HasForeignKey(c => c.UserId).OnDelete(DeleteBehavior.Restrict);
+			builder.Entity<Comment>().HasOne(c => c.Shop).WithMany(i => i.Comments);
+			builder.Entity<Comment>().HasOne(c => c.Parent).WithMany(c => c.Children);
+			builder.Entity<Comment>().HasMany(c => c.Children).WithOne(c => c.Parent);
 		}
 
 		#endregion Methods
