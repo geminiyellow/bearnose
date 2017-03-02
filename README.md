@@ -37,3 +37,9 @@ There is too much change, maintenance will sucks your life.
 
 - modify `utils/clean`
   - add param `force`, make you can delete files outside the project root
+
+## docker
+
+```docker
+docker-compose run --service-ports --rm --name bearnose web
+```

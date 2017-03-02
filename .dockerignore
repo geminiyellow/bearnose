@@ -1,0 +1,16 @@
+
+# IDEs and editors
+.idea
+.vscode
+.project
+.classpath
+*.launch
+.settings/
+.sql/
+
+# OS X trash files
+.DS_Store
+/ts-node-*/
+/NuGetScratch/
+.sql/
+.npm-debug.log
