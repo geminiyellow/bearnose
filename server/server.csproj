@@ -31,6 +31,14 @@
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="1.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="1.1.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OpenIddict" Version="1.0.0-beta2-0569" />
+    <PackageReference Include="OpenIddict.EntityFrameworkCore" Version="1.0.0-beta2-0569" />
+    <PackageReference Include="OpenIddict.Mvc" Version="1.0.0-beta2-0569" />
+    <PackageReference Include="AspNet.Security.OAuth.Validation" Version="1.0.0-beta1-0215" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="5.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="1.1.0" />
@@ -40,14 +48,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.0" />
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="1.0.0-msbuild3-final" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Models\Shops\" />
-    <Folder Include="Models\Comments\" />
-    <Folder Include="Models\Users\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="ViewModels\Shops\" />
-  </ItemGroup>
+
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="1.0.0-msbuild3-final" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.0-msbuild3-final" />

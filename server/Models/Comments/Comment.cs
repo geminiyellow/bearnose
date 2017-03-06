@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
 using MicroSB.Server.Models.Shops;
 using MicroSB.Server.Models.Users;
 
@@ -10,17 +9,8 @@ namespace MicroSB.Server.Models.Comments
 {
 	public class Comment
 	{
-		#region Constructor
-
-		public Comment()
-		{
-		}
-
-		#endregion Constructor
-
 		#region Properties
-		[Key]
-		[Required]
+		[Key, Required]
 		public int Id { get; set; }
 
 		[Required]

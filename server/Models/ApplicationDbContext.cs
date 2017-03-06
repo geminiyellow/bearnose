@@ -1,12 +1,13 @@
 ﻿using MicroSB.Server.Models.Comments;
 using MicroSB.Server.Models.Shops;
 using MicroSB.Server.Models.Users;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace MicroSB.Server.Models
 {
-	public class ApplicationDbContext: DbContext
+	public class ApplicationDbContext: IdentityDbContext<ApplicationUser>
 	{
 		#region Constructor
 
@@ -44,7 +45,6 @@ namespace MicroSB.Server.Models
 
 		 public DbSet<Shop> Shops { get; set; }
 		 public DbSet<Comment> Comments { get; set; }
-		 public DbSet<ApplicationUser> Users { get; set; }
 
 		 #endregion Properties
 

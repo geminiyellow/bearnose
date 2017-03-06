@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
 using MicroSB.Server.Models.Comments;
 using MicroSB.Server.Models.Users;
 
@@ -10,19 +9,9 @@ namespace MicroSB.Server.Models.Shops
 {
 	public class Shop
 	{
-		#region Constructor
-
-		public Shop()
-		{
-			
-		}
-
-		#endregion Constructor
-
 		#region Properties
 
-		[Key]
-		[Required]
+		[Key, Required]
 		public int Id { get; set;}
 
 		[Required]
