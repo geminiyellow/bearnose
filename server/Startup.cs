@@ -6,6 +6,7 @@ using AutoMapper;
 using MicroSB.Server.Models;
 using MicroSB.Server.Models.Shops;
 using MicroSB.Server.Models.Users;
+using MicroSB.Server.Services;
 using MicroSB.Server.ViewModels.Shops;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -95,7 +96,10 @@ namespace MicroSB.Server
                 // During development, you can disable the HTTPS requirement.
                 .DisableHttpsRequirement();
 
-            // Add ApplicationDbContext's DbSeeder
+            services.AddTransient<IEmailSender, AuthMessageSender>();
+			services.AddTransient<ISmsSender, AuthMessageSender>();
+
+			// Add ApplicationDbContext's DbSeeder
             services.AddSingleton<IDatabaseInitializer, DatabaseInitializer>();
         }
 
@@ -135,6 +139,25 @@ namespace MicroSB.Server
                 //     options.RequireHttpsMetadata = false;
                 // });
             });
+
+            app.UseWhen(context => !context.Request.Path.StartsWithSegments("/api"), branch =>
+			{
+				branch.UseStatusCodePagesWithReExecute("/error");
+
+				branch.UseIdentity();
+
+				//branch.UseGoogleAuthentication(new GoogleOptions
+				//{
+				//	ClientId = "560027070069-37ldt4kfuohhu3m495hk2j4pjp92d382.apps.googleusercontent.com",
+				//	ClientSecret = "n2Q-GEw9RQjzcRbU3qhfTj8f"
+				//});
+
+				//branch.UseTwitterAuthentication(new TwitterOptions
+				//{
+				//	ConsumerKey = "6XaCTaLbMqfj6ww3zvZ5g",
+				//	ConsumerSecret = "Il2eFzGIrYhz6BWjYhVXBPQSfZuS4xoHpSSyD9PI"
+				//});
+			});
 
             app.UseOpenIddict();
 
