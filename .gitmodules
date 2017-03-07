@@ -1,3 +1,6 @@
 [submodule "client"]
 	path = client
 	url = git@github.com:geminiyellow/bearears.git
+[submodule "authorization"]
+	path = authorization
+	url = git@github.com:geminiyellow/bearteeth.git
