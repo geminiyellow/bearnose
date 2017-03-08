@@ -307,3 +307,6 @@ ChromeDebugger-UserData
 /ts-node-*/
 /NuGetScratch/
 .sql/
+
+# Authorization Server
+/authorization
