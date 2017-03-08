@@ -46,7 +46,7 @@ namespace MicroSB.Server
 			services.AddEntityFramework();
 
 			// Add ApplicationDbContext.
-			var connection = Configuration.GetConnectionString("microsb");
+			var connection = Configuration.GetConnectionString("MicroSB:Resources");
 			services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connection));
 
 			// Add ApplicationDbContext's DbSeeder
