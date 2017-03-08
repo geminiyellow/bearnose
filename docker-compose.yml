@@ -3,6 +3,8 @@ services:
   db:
     image: microsoft/mssql-server-linux
     container_name: bearhead
+    stdin_open: true
+    tty: true
     environment:
       SA_PASSWORD: "Password1"
       ACCEPT_EULA: "Y"
@@ -11,15 +13,34 @@ services:
     volumes:
       - sqlinux-volume:/var/opt/mssql
 
+  authorization:
+    build:
+      context: .
+      dockerfile: ./authorization/Dockerfile
+    container_name: bearteeth
+    stdin_open: true
+    tty: true
+    environment:
+      - "ConnectionStrings:MicroSB:Authorization=Server=db,1433;Database=bearteeth;User Id=sa;Password=Password1;MultipleActiveResultSets=True"
+    depends_on:
+      - "db"
+    ports:
+      - "6000:6000"
+    volumes:
+      - './authorization:/home/'
+
   web:
     build:
       context: .
       dockerfile: Dockerfile
     container_name: bearnose
+    stdin_open: true
+    tty: true
     environment:
-      - "ConnectionStrings:MicroSB=Server=db,1433;Database=microsb;User Id=sa;Password=Password1;MultipleActiveResultSets=True"
+      - "ConnectionStrings:MicroSB:Resources=Server=db,1433;Database=bearnose;User Id=sa;Password=Password1;MultipleActiveResultSets=True"
     depends_on:
       - "db"
+      - "authorization"
     ports:
       - "3000:3000"
     volumes:

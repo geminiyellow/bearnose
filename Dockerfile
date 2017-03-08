@@ -1,13 +1,9 @@
-FROM microsoft/dotnet:1.1.0-sdk-msbuild-rc4
+FROM microsoft/dotnet:1.1.1-sdk
 
 MAINTAINER geminiyellow geminiyellow@gmail.com
 
 # set up network
 ENV ASPNETCORE_URLS http://+:3000
-
-# set env var for packages cache
-ENV DOTNET_HOSTING_OPTIMIZATION_CACHE /packagescache
-ENV ASPNETCORE_CACHE_VERSION 1.1.0
 
 # gpg keys listed at https://github.com/nodejs/node
 RUN set -ex \
@@ -25,7 +21,6 @@ RUN set -ex \
     gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key"; \
   done
 
-ENV NPM_CONFIG_LOGLEVEL info
 ENV NODE_VERSION 7.7.1
 
 # set up node
@@ -44,7 +39,5 @@ RUN buildDeps='xz-utils' \
     #####################################################
     # set up bower and what you want
     && npm install -g gulp
-
-COPY . /home
 
 WORKDIR /home
