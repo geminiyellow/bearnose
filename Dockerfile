@@ -21,7 +21,7 @@ RUN set -ex \
     gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key"; \
   done
 
-ENV NODE_VERSION 7.7.1
+ENV NODE_VERSION 7.7.2
 
 # set up node
 RUN buildDeps='xz-utils' \
@@ -38,6 +38,6 @@ RUN buildDeps='xz-utils' \
     && ln -s /usr/local/bin/node /usr/local/bin/nodejs \
     #####################################################
     # set up bower and what you want
-    && npm install -g gulp
+    && npm install -g gulp yarn
 
 WORKDIR /home
